@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: credit-system-app
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/var/www
+    working_dir: /var/www
+    depends_on:
+      - mysql
+    command: tail -f /dev/null
+
+  mysql:
+    image: mysql:8.0
+    container_name: credit-system-mysql
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: credit
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: secret
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:

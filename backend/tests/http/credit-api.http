@@ -1,0 +1,41 @@
+### 🧍‍♂️ Create Client
+POST http://localhost:8000/api/clients
+Content-Type: application/json
+Accept: application/json
+
+{
+    "name": "Petr Pavel",
+    "age": 35,
+    "region": "PR",
+    "income": 1500,
+    "score": 600,
+    "pin": "123-45-6789",
+    "email": "petr.pavel@example.com",
+    "phone": "+420123456789"
+}
+
+###
+
+### 🤔 Check Eligibility
+POST http://localhost:8000/api/credits/check
+Content-Type: application/json
+Accept: application/json
+
+{
+    "pin": "123-45-6789"
+}
+
+###
+
+### 💸 Issue Credit
+POST http://localhost:8000/api/credits/issue
+Content-Type: application/json
+Accept: application/json
+
+{
+    "pin": "123-45-6789",
+    "name": "Personal Loan",
+    "amount": 1000,
+    "start_date": "2024-01-01",
+    "end_date": "2024-12-31"
+}
